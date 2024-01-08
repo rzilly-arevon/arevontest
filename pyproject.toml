@@ -1,6 +1,47 @@
 [build-system]
-requires = ["setuptools>=42.0","wheel"]
+requires = [
+    "setuptools>=61",
+    "wheel"]
+    
 build-backend = "setuptools.build_meta"
 
+[project]
+name = arevonpy
+description = arevon libarary files
+auther = "Ryan Zilly"
+requires-python = ">=3.7"
+license = { text = "GPLv2+" }
+authors = [{ name = "Ryan Zilly", email = "rzilly@arevonenergy.com" }]
+classifiers = [
+    "Programing Language :: Python :: 3",
+    "Programing Language :: Python :: 3.8",
+    "Programing Language :: Python :: 3.9",
+    "Programing Language :: Python :: 3.10",
+    "Programing Language :: Python :: 3.11",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    ]
+    
+dependencies = [
+    "cffi>=1.15.1",
+    "jinja2",
+    "tzlocal",
+    "packaging;platform_system=='Windows'",
+    "typing-extensions;python_version<'3.8'",
+    "backports.zoneinfo;python_version<'3.9'"
+]
+dynamic = ["version"]
+    
+[project.optional-dependencies]
+test_minimal = ["pytest", "coverage", "pytest-cov"]
+test = ["pytest", "ipython", "numpy", "pandas>=1.3.5"]
+numpy = []
+pandas = ["numpy", "pandas>=1.3.5"]
+types = ["mypy", "types-tzlocal"]
+all = ["pytest", "ipython", "pandas>=1.3.5", "numpy"]  
+    
 [tool.setuptools]
-packages = ["arevonpy"]
+packages = [
+    "arevonpy",
+]
